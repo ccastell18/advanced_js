@@ -1,0 +1,22 @@
+static languages - variables must be declared before given a value.
+
+pros: 
+-documentation
+cons: 
+-harder to read.
+
+ex. int a;
+    a = 100
+
+  function sum(a: number, b: number){
+    return a + b
+  }
+
+
+dynamic languages - can determine types on their own.  
+ex. var a = 100;
+
+weak languages- you can add two different types.
+strong languages - throws errors if types don't match.
+
+Typescript has it's own compiler.  Adds functionality on top of Javascript.

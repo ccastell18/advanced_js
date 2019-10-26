@@ -1,0 +1,23 @@
+-invoking a function creates keywords "this" and "arguments"
+
+-function in an object is called a method.
+
+-adding .call() automatically calls the function.
+
+-function constructor
+
+ex. const four = new Function('num', 'return num');
+  four(4) will return 4.
+
+-creating a function is like creating a special object. It contains methods, name, and ();
+
+ex.  function woohoo(){
+  console.log('aaaaah');
+}
+    woohoo.yell= 'woohoo';
+
+    cont special object = {
+      yell: 'woohoo',
+      name: 'woohoo',
+      (): 'aaaaah'
+    }

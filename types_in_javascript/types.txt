@@ -1,0 +1,18 @@
+// Primitive Types: numbers, booleans, strings, undefined, null, Symbol,(single value) 
+// Non-Primitive Types: objects, arrays, functions(doesn't have value directly, it has references).
+// null is actually an object.
+// undefined is the absence of  a definition (no return ), null is no value()
+// arrays and functions are objects. 
+
+array = ['1', '2', '3'] === obj{ 0: '1', 1: '2', 2: '3'}
+
+// Array.isArray([1,2,3]) === true;
+
+//By references-objects
+//By value - Primitive types
+// since objects reference a space in memory, the only way to copy the obj is to clone it.
+    let obj = {a: 'a', b: 'b', c: 'c'};
+    let clone = Object.assign({}, obj); or
+    let clone2= {...obj};or
+    let superClone = JSON.parse(JSON.stringify(obj))(is a deep clone that references the original even if inner objects are changed.);
+    the clone is an exact copy of obj that can be manipulated without changing original obj.
