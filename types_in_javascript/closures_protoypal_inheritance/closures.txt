@@ -1,0 +1,56 @@
+High order function - can take a function as an argument, or function that returns another function.
+
+closure - a combination of function and lexical environment. Allows access to variables after it leaves scope.
+
+function a(){
+  let grandpa = 'grandpa';
+  return function b(){
+    let father = 'father'
+    return funcion c(){
+      let son = 'son'
+      return `${grandpa} ${father} ${son}`; 
+    }
+  }
+}
+
+a()()() would call function c();
+
+When a() is called, 'grandpa' is put on the memory heap and a() is taken off the stack. b() is called and 'father' is put in memory heap. c() gets called and 'son' is now present. Javascript makes sure that functions have access to all variables outside function with closure box. Closure keeps variables referenced by child function. Also called lexical scoping.
+
+Closures and memory
+
+ex1.
+function heavyDuty(index){
+  cont bigArray = new Array(7000).fill('hi');
+  return bigArray[index]
+}
+creates the array, then destroys the array.
+
+ex2.
+function heavyDuty2(){
+  cont bigArray = new Array(7000).fill('hi');
+  return function(index){
+    return bigArray[index];
+  }
+}
+created the array once then could access the indexes multiple times saving memory and speed.
+
+Closures and Encapsulation
+const makeNuclearButton = () =>{
+  let timeWithoutDestruction = 0;
+  const passTime = () => timeWithoutDestruction++;
+  const totalPeaceTime = () => timeWithoutDestruction
+  const launch = () => {
+    timeWithoutDestruction = -1;
+    return 'boom';}
+  setInterval(passTime, 1000)
+  retun{
+    launch: launch
+    totalPeaceTime: totalPeaceTime
+  } 
+}
+
+const ohno = makeNuclearButton();
+ohno.totalPeaceTime() //would increment as long as launch method is not called.
+
+Closure encapsulation basically hides information that others should not have access to.  In the above example, passTime() and timeWithoutDestruction() methods are not accessible.  only launch() and totalPeaceTime();  

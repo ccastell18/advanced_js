@@ -21,3 +21,17 @@ ex.  function woohoo(){
       name: 'woohoo',
       (): 'aaaaah'
     }
+
+  First class citizens
+  //1 assign to variable
+  var stuff = function(){}
+
+  //2 pass into arguments
+  function a(fn){
+    fn()
+  }
+
+  //3 return functions as values
+  function b (){
+    return function c(){'hi'};
+  }
