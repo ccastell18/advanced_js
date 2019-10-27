@@ -1,0 +1,54 @@
+Prototypal Inheritance:
+
+Inheritance is an object getting access to properties and methods from other objects.  
+
+ex.
+
+const array = []
+array.__proto__ (shows array properties)            object
+array.__proto__.__proto__(shows base object)       /       \
+                                              array       function
+ex.
+ function a(){}
+ a.__proto__(function code)
+ a.__proto__.__proto__(shows base object) 
+
+ An example of Inheritance
+
+ let dragon = {
+   name: 'Tanya',
+   fire: true,
+   fight(){
+     return 5
+   },
+   sing(){
+     return `I am ${this.name}, the breather of fire.`
+   }
+ }
+
+ let lizard = {
+   name: 'Kiki',
+   fight(){
+     return 1 
+   }
+ }
+ To access the methods from another object.
+ const singLizard = dragon.sing.bind(lizard) adds the sing method from dragon to lizard. 
+
+to aquire all methods and properties from dragon 
+ lizard.__proto__ = dragon;
+ anything that is declared in lizard will override dragon.
+
+ lizard.__proto__ = dragon;
+ for(let prop in lizard){
+   console.log(properties)
+ }
+ will list all properties .
+
+ lizard.__proto__ = dragon;
+ for(let prop in lizard){
+   if(lizard.hasOwnProperty(prop)){
+     console.log(prop);
+   }
+ }
+ will only list the props the lizard has declared, not inherited.
