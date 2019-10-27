@@ -12,7 +12,7 @@ ex.
  function a(){}
  a.__proto__(function code)
  a.__proto__.__proto__(shows base object) 
-
+___________________________________________________________________________
  An example of Inheritance
 
  let dragon = {
@@ -38,7 +38,7 @@ ex.
 to aquire all methods and properties from dragon 
  lizard.__proto__ = dragon;
  anything that is declared in lizard will override dragon.
-
+___________________________________________________________________________
  lizard.__proto__ = dragon;
  for(let prop in lizard){
    console.log(properties)
@@ -52,3 +52,26 @@ to aquire all methods and properties from dragon
    }
  }
  will only list the props the lizard has declared, not inherited.
+ __proto__ should not be used. just used to show uses.
+ __________________________________________________________________________
+
+ Working with functions and Inheritance
+
+ function multiplyBy5(num){
+   return num * 5;
+ }
+ multiplyBy5.__proto__ links to base function ;
+ __proto__ links to prototype which has (call, apply, bind, __proto__)
+ __________________________________________________________________________
+
+ create prototypes
+
+ let human = {
+   mortal: true,
+ }
+ let socrates = Object.create(human)
+ creates an object called socrates with the values and methods of human.  
+ socrates.age = 70
+ You can also add properties.
+ __________________________________________________________________________
+ Only functions have prototype property.
