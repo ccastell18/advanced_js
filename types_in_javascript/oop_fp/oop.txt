@@ -1,0 +1,141 @@
+Creating oop ex.
+
+step 1 constantly repeating code.
+const elf= {
+  name: 'orwell',
+  weapon: 'bow',
+  attack(){
+    return 'attack with ' + elf.weapon
+  }
+}
+const elf2 = {
+  name: 'sally',
+  weapon: 'bow',
+  attack(){
+    return 'attack with ' + elf2.weapon
+  }
+}
+
+Step 2 factory functions
+function createElf(name, weapon){
+  return {
+    name: name,
+    weapon: weapon,
+    attack(){
+      return 'attack with ' + weapon
+    }
+  }
+}
+const peter = createElf('Peter', 'stones');
+//creates an elf named peter.  can use same code to create multiple elves with DRY.
+// the same code is rewritten for each elf meaning the attack(), which is used for every elf, should be put in proto to save memory.
+
+Step 3. Prototypal inheritance.
+
+const elfFunctions = {
+  attack(){
+    return 'attack with ' + this.weapon
+  }
+}
+function createElf(name, weapon){
+  return {
+    name: name,
+    weapon: weapon,
+  }
+}
+const peter = createElf('Peter', 'stones');
+peter.attack = elfFunctions.attack
+peter.attack()
+//adding this refers to the left of the decimal.
+
+4. Object.create()
+
+const elfFunctions = {
+  attack(){
+    return 'attack with ' + this.weapon
+  }
+}
+
+function createElf(name, weapon){
+  let newElf = Object.create(elfFunctions)
+  newElf.name = name;
+  newElf.weapon = weapon;
+  return newElf
+}
+//Object create links the elfFunctions to the createElf.
+
+5. Constructor functions
+
+function Elf(name, weapon){
+  this.name = name;
+  this.weapon = weapon;
+}
+
+Elf.prototype.attack = function(){
+  return 'attack with ' + this.weapon
+}
+
+const peter = new Elf('peter', 'stones')
+//new means it is a constructor function.
+// new also means this does not reference the function, it is connected to the new function (ex. peter)
+//the attack function is added to the prototype of the constructor function (starts with the capital letter.)
+
+const Elf1 = new Function('name', 'weapon', 
+` this.name = name;
+  this.weapon = weapon`);
+const sarah = new Elf1('Sarah', 'bow');
+
+6. Classes
+class Elf{
+  constructor(name, weapon){
+    this.name = name;
+    this.weapon = weapon
+  }
+  attack(){
+    return 'attack with ' + this.weapon
+  }
+}
+
+//class can bundle the constructor function with the methods under the same class.
+// new substantiates the new object. It is also known as an instanceof the class.
+
+7. inheritance
+
+class Character{
+  constructor(name, weapon){
+    this.name = name;
+    this.weapon = weapon
+  }
+  attack(){
+    return 'attack with ' + this.weapon
+  }
+}
+
+class Elf extends Character{
+  constructor(name, weapon, type){
+    super(name, weapon);
+    this.type: type
+  }
+}
+
+class Ogre extends Character{
+  constructor(name, weapon, color){
+    super(name, weapon){
+      this.color = color;
+    }
+    makeFort(){
+      return 'strongest fort';
+    }
+  }
+}
+//extending Character is sub classing. Character is the super class, elf is the  sub class.
+//calling super in the constructor calls the super class (Character)
+
+8. Private vs public
+//not yet in service.  proposed putting # in front of a variable would make it a private variable and can only be used by that class.  
+
+9. 4 Pillars of OOP 
+  1. Encapsulation - wrap code in boxes that interact with each other.  
+  2.Abstraction - shows what an object can instantiate. What methods they can use.
+  3. Inheritance- extending a class with traits from another class.
+  4. Polymorphism- different forms.  Calling the same method and having it react in different ways.
