@@ -1,0 +1,176 @@
+Functional Programming
+
+intro exercise
+
+const user = {
+  name: 'Kim',
+  active: true,
+  cart: [],
+  purchases: []
+}
+
+const compose = (f,g) => (...args) => f(g(...args));
+
+purchaseItem(
+  emptyCart,
+  buyItem,
+  applyTax,
+  itemToCart
+)(user, {name: 'laptop', price: 200})
+
+function purchaseItem(...fns){
+  fns.reduce(compose)
+}
+function itemToCart(user, item){
+  const updateCart = user.cart.concat(item)
+  return Object.assign({}, user, {cart: updateCart})
+}
+
+function applyTax(user){
+  const {cart} = user;
+  const taxRate = 1.03;
+  const updatedCart = cart.map(item =>{
+    return {
+      name: item.name,
+      price: item.price*taxRate
+    }
+  })
+  return Object.assign({}, user, {cart: updatedCart} )
+}
+
+function buyItem(user){
+  return Object.assign({}, user, {purchases: user.cart})
+}
+
+function emptyCart(user){
+  return Object.assign({}, user, {cart: []})
+}
+
+implement a cart feature
+1. add items to cart.
+2. add 3% tax to item in cart
+3. buy item in cart --> purchases
+4. empty cart
+
+
+
+1. Pure Functions
+  same output given the same input, and function cannot manipulate anything outside itself.
+
+  const array = [1,2,3]
+  function removeLastItem(arr){
+    const newArray = [].concat(arr);
+    newArray.pop()
+    return newArray
+  }
+  //This function does not have side effects on the original array.
+
+  //referential transparency - if a function has the same output as input.
+
+  function a(num1, num2){
+    return num1 + num2
+    }
+
+    function b(num){
+      return num*2
+    }
+    a(3,4) //7
+    7
+    b(a(3,4)) = b(7)
+
+    2.idempotent
+    function notGood(){
+      return Math.Random()
+    }
+    //idempotent returns what is expected.  above function is not because it.
+    //also code within the code will return the same data.
+
+    3.Imperative vs Declarative
+    Imperative tells a machine what to do and how to do it.(machine code)
+    Declarative tells what to do and what should happen.(high order language)
+
+    Imperative
+    for(let i = 0; i < 1000; i++){
+      console.log(i);
+    }
+
+    Declarative
+    [1,2,3].forEach(item => console.log(item))
+
+    4. Immutability
+      not changing the state.
+      cont obj = {name: 'bob'}
+      function clone(obj){
+        return {...obj};//this is pure
+      }
+
+      function updateName(obj){
+        const obj2 = clone(obj);
+        obj2.name = 'jim';
+        return obj2
+      }
+
+    5. HOF and Closure
+    HOF takes one or more functions as arguments or returns a function.
+    ex. const hof = () => () => 5;
+        hof() returns a function
+        hof()() returns 5
+    Closure is a function that passes a variable outside of the immediate scope 
+    ex. const closure = function(){
+      let count = 0;
+      return function increment(){
+        count++;
+        return count;
+      }
+    }
+    const incrementFn = closure()
+    incrementFn();
+    //closures remember the variable outside the scope.
+    // modifies state belonging to another function.
+    // also makes variables immutable.
+    ex. const closure = function(){
+      let count = 55;
+      return function getCount(){
+        return count;
+      }
+    } 
+    const getCount = closure()
+
+    //the count cannot be changed by the user.
+
+    6. Currying
+    the technique of translating the evaluation of a function that takes multiple arguments into a sequence of arguments each with a single argument
+
+    const multiply = (a,b) => a*b;
+    const curriedMultiply = (a) => (b) => (a*b);
+    curriedMultiply(a)(b)
+    const curriedMultiplyBy5 = curriedMultiply(5);
+
+    7. Partial Application
+      a way to partially apply a function process of producing a function with a smaller number of parameters. 
+
+      ex.
+      curry version
+      const multiply = (a,b,c) => a*b*c;
+      const curriedMultiply = (a) => (b) => (c)=> (a*b*c);
+      Partial
+      const partialMultiplyBy5 = multiply.bind(null, 5);
+      partialMultiplyBy5(4,10)
+      //bind() binds the a to the multiply function.
+
+      8. Compose
+      data transformation should be obvious.
+
+      data-->fn -->data -->fn -->
+
+      -50 * 3 -
+      const compose = (f, g) => (data) => f(g(data))
+      const pipe = (f, g) => (data) => g(f(data))
+      const multiplyBy3 = num => num*3;
+      const makePositive= num => Math.abs()
+      const multiplyBy3AndAbsolute = compose(multiplyBy3, makePositive)
+      // order of components in the compose function matter.
+      // compose reads left to right, pipe reads right to left.
+      
+      9. Arity
+      number of arguments a function takes
