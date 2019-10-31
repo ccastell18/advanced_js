@@ -1,0 +1,33 @@
+How Javascript works
+
+What is a program?
+-allocate memory (memory heap)
+-parse and execute (call stack)
+
+syncronous- each bit of code must be finished before moving to the nex bit of code.
+
+stack overflow- when the call stack gets too many functions to run.
+
+-Javascript runtime environment has Javascript engine, web apis(Dom, Timeout), Callback Queue, and Event Loop.
+-bits of code are placed on call stack. It is then processed.
+- if it is a web api, it will place it on the callback Queue.
+-the event loop is constantly checking to see if the call stack is empty. If so, it will pop the callback queue onto the call stack and then processed. 
+
+Promises
+
+const promise = new Promise((resolve, reject) =>{
+  if(true){
+    resolve('stuff worked');
+  }else{
+    reject('error, it broke');
+  }
+})
+
+promise
+.then(result => { return result + !
+})
+.then(result2 =>{
+  throw Error
+  console.log(result2)
+})
+.catch(() => console.log('error'))
