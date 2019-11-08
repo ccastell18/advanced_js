@@ -76,8 +76,103 @@ const urls = [
 Promise.all(urls.map(url =>{
   return fetch(url).then(resp => resp.json())
 })).then(results => {
-  console.log(results[0])
-  console.log(results[1])
-  console.log(results[2])
+  console.log('users', results[0])
+  console.log('posts', results[1])
+  console.log('albums', results[2])
 }).catch(() => console.log('error'))
  
+
+ Async Await
+ movePlayer(100, 'left')
+  .then(() -> movePlayer(400, 'left'))
+  .then(() => movePlayer(10, 'right'))
+  .then(() => movePlayer(330, 'left'))
+
+  Added to ES8
+  async function playerStart(){
+    const firstMove = await movePlayer(100, 'left');//pause
+    await movePlayer(400, 'left');//pause
+    await movePlayer(10, 'right');//pause
+    await movePlayer(330, 'left');//pause
+  }
+
+  Real world use
+  old
+  fetch('https://jsonplaceholder.typicode.com/users')
+    .then(resp => resp.json())
+    .then(console.log)
+
+  new
+  async function fetchUsers(){
+    const resp = await fetch('https://jsonplaceholder.typicode.com/users');
+    const data = await resp.json();
+    console.log(data);
+  }
+
+  Real world use 2
+  const urls = [
+    'https://jsonplaceholder.typicode.com/users',
+    'https://jsonplaceholder.typicode.com/posts',
+    'https://jsonplaceholder.typicode.com/albums'
+]
+const getData = async function(){
+  try{
+    const [users, posts, albums] = await Promise.all(url =>
+    const response = await fetch(url);
+    return response.json()
+  )
+  console.log('users', results[0])
+  console.log('posts', results[1])
+  console.log('albums', results[2])
+  }catch(err){
+    console.log('oops', err);
+  }
+}
+
+Object spread operator
+const animals = {
+  tiger:24,
+  lion:4,
+  monkey: 2
+}
+const {tiger, ...rest} = animals;
+(call tiger)
+24
+(call rest)
+{lion: 4, monkey:2}
+
+Finally
+.finally(() => console.log('extra'));
+
+-finally is a bit of code that is run no matter if it has a response or is rejected.
+-always placed after the .catch
+
+For Await of
+
+//Async Await version
+const urls = [
+    'https://jsonplaceholder.typicode.com/users',
+    'https://jsonplaceholder.typicode.com/posts',
+    'https://jsonplaceholder.typicode.com/albums'
+]
+const getData = async function(){
+  try{
+    const [users, posts, albums] = await Promise.all(url =>
+    const response = await fetch(url);
+    return response.json();
+  ))
+  console.log('users', results[0])
+  console.log('posts', results[1])
+  console.log('albums', results[2])
+  }catch(err){
+    console.log('oops', err);
+  }
+}
+// for await of
+const getData2 = async function(){
+   const arrayOfPromises = urls.map(url => fetch(url));
+   for await( let request of arrayOfPromises){
+     const data = await request.json();
+     console.log(data);
+   }
+}
