@@ -1,0 +1,18 @@
+Threads 
+(Web Workers)
+Worker threads is a javascript program working on another thread in parallel to main.
+
+var worker = new Worker('worker.js')
+worker.postMessage('Helllooo')
+addEventListener('message')
+- will take message and add to main thread
+
+Concurrency       Concurrency + Parallelism
+|th1                        | th1|
+|                           |    |
+    |th2                    |    | th2|
+    |                       | __ |    | 
+|th1                             |                       
+|                           | TH1|__
+    |th2                    |    |__
+                            |    |TH2|
