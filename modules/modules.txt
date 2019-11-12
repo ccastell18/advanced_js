@@ -1,0 +1,40 @@
+Modules
+
+//tight coupling- all data in a large program is connected.
+//meaning variables in one script can become global and overwritten in another script.
+
+//Module Scope
+-Global scope
+  -Function scope 
+    -block scope -let and const
+
+  adding module scope
+    -Global scope
+      -Module scope
+        -Function scope 
+        -block scope
+
+//module keeps the function and block scope from the global scope.
+//gives control on what is functions and variables are imported 
+
+Module Pattern
+//IIFE
+(function(){
+  .....
+})()
+//code is private to function but also has access to global variables
+
+the module pattern 
+var fightModule = (function(){
+  var harry = 'potter'
+  var voldermort = 'He who must not be named'
+  function fight(char1, char2){
+    var attack1 = Math.floor(Math.random() * char1.length);
+    var attack2 = Math.floor(Math.random() * char1.length);
+    return attack1 > attack2 ? `${char1} wins` : `${char2} wins`;
+  }
+return{
+  fight: fight
+} 
+})
+// return what you want to make available. harry and voldermort are private while fight 
