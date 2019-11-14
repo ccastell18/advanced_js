@@ -36,5 +36,41 @@ var fightModule = (function(){
 return{
   fight: fight
 } 
-})
-// return what you want to make available. harry and voldermort are private while fight 
+})()
+// return what you want to make available. harry and voldermort are private while fightModule is accessible
+//can be called fightModule.fight(char1, char2)
+//meaning other code can use the functionality, but cannot use the variables.
+//putting variable name in function parameter and call parameter will localize the variable so it won't go up the scope to affect the global variable.
+
+CommonJS and AMD
+// make modules without interference of global scope
+
+CommonJS
+var module1 = require('module1')  //.fight;
+var module2 = require('module2')  //.importedFunc2;
+
+function fight(){
+
+}
+
+module.exports = {
+  fight: fight
+};
+//syncronous and can slow down web page
+//browserify can bundle all scripts
+
+AMD
+//
+define(['module1', 'module2'],
+  function(moduleImport1, moduleImport2){
+    var module1 = moduleImport1 //.fight
+    var module2 = moduleImport2 //.importedFunc2
+
+    function dance(){
+
+    }
+    return{
+      dance: dance,
+    };
+  });
+//loads files asynchronously
