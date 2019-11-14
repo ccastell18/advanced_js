@@ -1,0 +1,23 @@
+Errors
+
+//new Error('....') just creates a new error.  does nothing with it
+// throw new Error() is an uncaught error
+// stops program.
+
+3 properties
+//const myError = new Error('oopsie')
+
+myError.name = myError;
+myError.message = 'oopsie'
+myError.stack shows where the error happens
+
+other errors 
+new SyntaxError
+new ReferenceError
+
+Call stack
+ERROR!                          |
+Is there a catch?               |
+Is there a catch?               |
+Runtime catch:onerror()         |
+process.on('uncaughtException') V

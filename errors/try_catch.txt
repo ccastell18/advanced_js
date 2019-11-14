@@ -1,0 +1,14 @@
+Try Catch
+
+function fail(){
+  try{
+    console.log('this works')
+  }catch(error){
+    console.log('we made a mistake', error)
+  }finally{
+    console.log('still good')
+  }
+}
+//catch takes an error parameter. it takes in the error parameter if the Try fails and throws an error. 
+//putting the error in the function gives more information about the error.
+// the finally is not necessary.  It is used no matter what happens in the try/catch.

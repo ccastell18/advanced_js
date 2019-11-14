@@ -1,0 +1,34 @@
+Async error
+ex
+try{
+  setTimeout(function(){
+    variable
+  }, 1000)
+}catch(e){
+  console.log('got it',e);
+}
+the try would still run even though there is an error.  setTimeout is Async and runs after the error is thrown.
+
+Promise.resolve('asyncfail')
+  .then(response =>{
+    throw new Error('#1 fail')
+    console.log(response)
+  })
+   .then(response =>{
+    console.log(response)
+  })
+  .catch(err => {
+    console.log(err)
+  })
+  // the catch is needed to receive the thrown error and display it.
+
+(async function(){
+  try{
+    await Promise.resolve('oopsie');
+  }
+  catch(err){
+    console.log(err)
+  }
+  console.log('still good');
+})()
+//The error is thrown and logged, but the last console.log also gets called.

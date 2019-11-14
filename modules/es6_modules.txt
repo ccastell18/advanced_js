@@ -1,0 +1,32 @@
+ES6 modules
+
+import module1 from 'module1'
+import module2 from 'module2'
+
+export function jump(){
+
+}
+//simplified version
+
+redoing IIFE
+
+const harry = 'potter'
+const voldermort = 'He who must not be named'
+
+function jump(){
+
+}
+
+export function fight(char1, char2){
+    const attack1 = Math.floor(Math.random() * char1.length);
+    const attack2 = Math.floor(Math.random() * char1.length);
+    return attack1 > attack2 ? `${char1} wins` : `${char2} wins`;
+  }
+
+On index page
+  <script type='module'>
+  import {fight} from 'script.js';
+  </script>
+
+//if default is placed before the word function, the curly brackets are not necessary.
+// type='module' must be put on all scripts that are using global data.
