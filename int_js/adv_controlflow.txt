@@ -1,0 +1,32 @@
+Ternary operator
+condition ? expr1 : expr2
+//if valid expr1, else expr2
+
+function isUserVaid(bool){
+  return bool
+}
+var answer = isUserVaid(true) ? "you may enter" : "Access Denied";
+
+Switch statement
+ 
+ function moveCommand(direction){
+   let whatHappens;
+      switch (direction){
+        case "forward":
+          whatHappens = "you encounter a monster"
+          break;
+        case "back":
+          whatHappens = "you arrive home"
+          break;
+        case "right":
+          whatHappens = "you found a river"
+          break;
+        case "left":
+          whatHappens = "you encounter a troll"
+          break;
+        default:
+          whatHappens = "please enter a valid direction";          
+      }
+      return whatHappens
+ }
+// break takes the case and sends it to the return 

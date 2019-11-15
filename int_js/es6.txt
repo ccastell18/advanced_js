@@ -1,0 +1,36 @@
+Added to ES6
+
+Let and Const
+using var can change variables within brackets. 
+let - the new var. cannot change variables
+const - can never be reassigned. If an object is a const, you can change properties within. 
+
+Destructuring
+ const obj = {
+    player: 'bobby',
+    experience: 100, 
+    wizardlLevel: false
+ }
+
+ const player = obj.player
+ const experience = obj.experience
+ const wizardlLevel = obj.wizardlLevel
+
+ //destructured
+ const {player, experience} = obj;
+//access to properties with less code.
+
+Object properties
+if property and value are the same, just need the property name
+
+const a = "simon"
+const b = 'true'
+const c = {};
+const obj = {a, b, c} 
+
+instead of 
+const obj ={
+  a:a,
+  b:b,
+  c:c
+}
