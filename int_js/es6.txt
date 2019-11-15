@@ -34,3 +34,26 @@ const obj ={
   b:b,
   c:c
 }
+
+Template Strings
+// using back ticks and then using ${variable} around your variable, no more using 
+const name = 'sam';
+const greeting = "hello " + name + ".";
+const newGreeting = `hello ${name}.`;
+
+Default Arguments
+function greet(name="Sam");
+newGreeting()// now shows
+"hello Sam."
+- if parameters are not given in the function, it will fill in the arguments with default arguments.
+
+Symbol
+let sym1 = Symbol();
+let sym2 = Symbol('foo');
+let sym3 = Symbol('foo');
+
+sym2 === sym3;
+false
+
+Arrow functions
+const a = (a,b) => a + b
