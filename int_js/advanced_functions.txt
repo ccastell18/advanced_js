@@ -1,0 +1,45 @@
+ const first = () => {
+   cont greet = "Hi";
+   const second = () => {
+     alert(greet);
+   }
+   return second;
+ }
+
+ const newFunc = first();
+ newFunc();
+
+ //closures
+ child scope has access to the parent scope.  It remembers the reference to the variables in the parent function.
+ //the function ran.  the function executed. It's never going to run again. But it is going to remember there are references to those variables so the child scope always has access to the parent scope.  
+ // once newFunc() runs with first(), it remembers the greet variable.
+ //child has access to parent, parent cant access child.
+
+ Currying
+ const multiply = (a, b) => a * b;
+ const curriedMultiply = (a) => (b) => a*b 
+ curriedMultiply(3)
+ //will return another function (b) => a*b
+ //process of converting a function with multiple arguments into a function that takes them one at a time.
+ // Why?
+ const multiplyBy5 = curriedMultiply(5);
+ //means anytime you call multiplyBy5 function, it multiplies by 5
+ multiplyBy5(5);
+ 25
+
+ Compose
+ const compose = (f, g) => (a) => f(g(a));
+  // f is a function and g is a function
+How?
+const sum = num => num + 1;
+compose(sum, sum)(5);
+answer would be 7
+why?
+running compose would give function (a) => f(g(5))
+then g is sum, so it would b f(sum(5)), which would be f(6).
+then f is also sum so it would be sum(6), which would add to 7.
+
+// Avoiding side effects and functional purity
+-Side effects are when the actions of a function alter variables outside the function.
+-functional purity = avoid side effects and always return a value.
+-Deterministic - if the input parameters always returns the same value.
