@@ -1,0 +1,36 @@
+var array = [1, 2, 10, 17];
+
+forEach
+const newArray = array.forEach(num =>{
+  num * 2;
+})
+//does not change the array.
+const double = []
+const newArray = array.forEach(num =>{
+  double.push(num * 2);
+})
+
+Map
+
+const mapArray = array.map(num => {
+  return num * 2
+})
+//creates new array mapArray
+// difference between map and forEach
+  -forEach just iterates over the array and applies the operation given. Has side effects. 
+  -map is expected to return something. It transform the array. Pure function.
+
+Filter
+
+const filterArray = array.filter(num => {
+  return num > 5
+});
+//iterates array and adds num to new array if works with filter (greater than 5);
+//true and false
+
+Reduce
+
+const reduceArray = array.reduce((accumulator, num) =>{
+  return accumulator + num
+}, 0)
+// the accumulator is the parameter after the function that is the starting point.
