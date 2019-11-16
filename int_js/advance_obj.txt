@@ -1,0 +1,61 @@
+Reference Type
+
+var object1 = {value: 10}
+var object2 = object1;
+var object3 = {value: 10}
+
+object1 === object2 //true
+object1 === object3 //false
+
+//object1 created a new object with value of 10.
+//object2 references object1.
+//object3 created another new object.
+
+Context
+//context vs scope
+//uses 'this'
+//'this' refers to the object it is inside of.
+
+function a(){
+  console.log(this)
+}
+//would refer to the window object.
+
+const object4 = {
+  a: function(){
+    console.log(this)
+  }
+}
+// would refer to the a:function.
+
+instantiation
+// when you make a copy of a code and reuse the code.
+//instances or multiple copies
+
+class Player {
+  constructor(name, type){
+    this.name = name;
+    this.type = type;
+  }
+  introduce() {
+    console.log(`Hi I am ${this.name}, I'm a ${this.type}`)
+  }
+}
+
+//anytime the Player class is instiated, it uses the constructor and creates a name and type.
+//any player can use the introduce method.
+// to access property in the constructor, use 'this'.
+
+class Wizard extends Player {
+  constructor(name, type) {
+    super(name, type)
+  }
+  play(){
+    console.log(`I'm a ${this.type}`);
+  }
+}
+
+const wizard1 = new Wizard('Shawn', 'healer');
+
+//when extending a class, must use super() to call properties from exteded class.
+//wizard1 has access to play() and introduce()
