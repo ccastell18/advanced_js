@@ -1,0 +1,13 @@
+const pets = ['cat', 'dog', 'bat'];
+
+.includes()
+//returns boolean
+pets.includes('dog')
+true
+
+pets.includes('bird')
+false
+
+power of
+const square = x => x**2;
+const cube = y => y**3;

@@ -1,0 +1,34 @@
+Flat
+
+const array = [1,2,3,4,5]
+array.flat()
+//nothing happens
+
+const array2 = [1,[2,3],[4,5]]
+array2.flat()
+//returns [1,2,3,4,5]
+
+const array3 = [1,2,[3,4,[5]]]
+array3.flat()
+//returns [1,2,3,4,[5]]
+//flat defaults to 1 level.
+
+array3.flat(2)
+//returns [1,2,3,4,5]
+
+//can also clean up empty entries
+const entries = ['bob', 'sally',,,,,,'cindy']
+entries.flat()
+//returns ['bob', 'sally', 'cindy']
+
+Flat Map
+const jurassicParkChaos = jurassicPark.flatMap(creature => creature + 1);
+
+.trimstart() trims empty space at beginning.
+.trimend() trims empty space at end
+
+fromEntries
+Object.fromEntries() takes an array of nested arrays and makes into an object.
+
+Try/Catch
+//You don't need to have the error parameter on the catch function.  Try will automatically throw an error.
