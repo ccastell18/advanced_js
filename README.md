@@ -1,1 +1,1 @@
-# advanced_js
+These are notes from an advanced Javascript course.  The course went into detail about the changes to Javascript over the past few years.  It talks about Closures, Async, Functional Programming, and other newer topics.  
